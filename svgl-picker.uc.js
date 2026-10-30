@@ -5,6 +5,7 @@
     return;
   }
   window.__svglPickerLoaded = true;
+  console.info("[SVGL Icons] loaded in", window.location.href);
 
   const XHTML_NS = "http://www.w3.org/1999/xhtml";
   const API = "https://api.svgl.app";
@@ -88,6 +89,12 @@
     const pages = document.getElementById("PanelUI-zen-emojis-picker-pages");
     const tabs = document.getElementById("PanelUI-zen-emojis-buttons-wrapper");
     if (!picker || !panel || !pages || !tabs) {
+      console.info("[SVGL Icons] icon picker not ready yet", {
+        picker: !!picker,
+        panel: !!panel,
+        pages: !!pages,
+        tabs: !!tabs,
+      });
       return false;
     }
 
@@ -279,17 +286,28 @@
         ours,
       ]);
     };
+    console.info("[SVGL Icons] tab added to the icon picker");
     return true;
   }
 
   function start() {
-    if (addTab()) {
+    try {
+      if (addTab()) {
+        return;
+      }
+    } catch (err) {
+      console.error("[SVGL Icons] couldn't add the tab:", err);
       return;
     }
     // the picker isn't built yet: try again the first time a panel opens
     const retry = () => {
-      if (addTab()) {
+      try {
+        if (addTab()) {
+          window.removeEventListener("popupshowing", retry, true);
+        }
+      } catch (err) {
         window.removeEventListener("popupshowing", retry, true);
+        console.error("[SVGL Icons] couldn't add the tab:", err);
       }
     };
     window.addEventListener("popupshowing", retry, true);
