@@ -1,0 +1,87 @@
+/* SVGL tab in Zen's icon picker (looks like Zia's icon tab) */
+
+/* With icons only (spaces), Zen makes its own tab unclickable since it's the
+   only page; next to the SVGL tab it's the way back */
+#PanelUI-zen-emojis-picker[only-svg-icons="true"] #PanelUI-zen-emojis-picker-change-svg {
+  pointer-events: auto !important;
+}
+
+#svgl-icons-page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 0;
+}
+
+#svgl-icons-searchbar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 8px 10px;
+  box-sizing: border-box;
+}
+
+#svgl-icons-search {
+  flex: 1;
+  min-width: 0;
+  padding: 6px 8px;
+  border: none;
+  border-radius: 8px;
+  background-color: light-dark(rgba(0, 0, 0, 0.05), rgba(255, 255, 255, 0.07));
+  color: light-dark(rgb(28, 28, 32), rgb(255, 255, 255));
+  font: inherit;
+
+  &::placeholder {
+    color: light-dark(rgba(0, 0, 0, 0.4), rgba(255, 255, 255, 0.4));
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+#svgl-icons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(32px, 1fr));
+  align-content: start;
+  gap: 5px;
+  padding: 0 10px 10px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#svgl-icons-more {
+  grid-column: 1 / -1;
+  height: 1px;
+}
+
+.svgl-icon-item {
+  --toolbarbutton-inner-padding: 6px;
+  margin: 0 !important;
+  border-radius: 6px;
+
+  & > .toolbarbutton-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* a logo that failed to load */
+  &[broken] {
+    opacity: 0.3;
+  }
+
+  /* downloading the picked logo */
+  &[busy] {
+    opacity: 0.5;
+  }
+}
+
+#svgl-icons-message {
+  padding: 18px 10px;
+  text-align: center;
+  color: light-dark(rgba(0, 0, 0, 0.45), rgba(255, 255, 255, 0.45));
+  font-size: 12px;
+}
