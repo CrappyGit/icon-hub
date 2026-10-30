@@ -3,15 +3,26 @@
   "name": "SVGL Icons",
   "description": "Adds an SVGL tab to Zen's icon picker, with brand logos from svgl.app for spaces and folders.",
   "author": "kenive",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "style": {
     "chrome": "chrome.css"
   },
   "scripts": {
     "svgl-picker.uc.js": {
-      "include": ["chrome://browser/content/browser.xhtml"]
+      "include": [
+        "chrome://browser/content/browser.xhtml"
+      ]
+    },
+    "folder-tidy.uc.js": {
+      "include": [
+        "chrome://browser/content/browser.xhtml"
+      ]
     }
   },
-  "tags": ["icons"],
-  "fork": ["zen"]
+  "tags": [
+    "icons"
+  ],
+  "fork": [
+    "zen"
+  ]
 }
