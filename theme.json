@@ -1,28 +1,17 @@
 {
-  "id": "svgl-picker",
-  "name": "SVGL Icons",
-  "description": "Adds an SVGL tab to Zen's icon picker, with brand logos from svgl.app for spaces and folders.",
+  "id": "icon-hub",
+  "name": "Icon Hub",
+  "description": "Adds a tab to Zen's icon picker with any icon from Iconify (emoji included), brand logos from svgl.app, and your own icons, for spaces and folders.",
   "author": "kenive",
-  "version": "1.0.2",
+  "version": "1.0.0",
   "style": {
     "chrome": "chrome.css"
   },
   "scripts": {
-    "svgl-picker.uc.js": {
-      "include": [
-        "chrome://browser/content/browser.xhtml"
-      ]
-    },
-    "folder-tidy.uc.js": {
-      "include": [
-        "chrome://browser/content/browser.xhtml"
-      ]
+    "icon-hub.uc.js": {
+      "include": ["chrome://browser/content/browser.xhtml"]
     }
   },
-  "tags": [
-    "icons"
-  ],
-  "fork": [
-    "zen"
-  ]
+  "tags": ["icons"],
+  "fork": ["zen"]
 }
